@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GJ Team | 伟大的TSB旅程</title>
+    <style>
+        :root {
+            --primary: #5865F2;
+            --secondary: #57F287;
+            --accent: #FEE75C;
+            --accent-red: #ED4245;
+            --dark: #2C2F33;
+            --darker: #23272A;
+            --text: #FFFFFF;
+            --text-gray: #B9BBBE;
+            --tech-blue: #00BFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Whitney', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(88, 101, 242, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(87, 242, 135, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, 
+                rgba(15, 12, 36, 0.9), 
+                rgba(41, 21, 71, 0.9));
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            margin-bottom: 1rem;
+            object-fit: cover;
+            box-shadow: 0 0 20px var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            background-color: var(--dark);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--primary);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title .emoji {
+            margin-right: 10px;
+        }
+        
+        /* 身份组样式 */
+        .role-list {
+            list-style-type: none;
+        }
+        
+        .role-item {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .role-name {
+            font-weight: bold;
+            margin-right: 1rem;
+            min-width: 250px;
+        }
+        
+        .role-description {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        .management-role {
+            color: var(--accent-red);
+        }
+        
+        .basic-role {
+            color: var(--primary);
+        }
+        
+        .skill-role {
+            color: var(--secondary);
+        }
+        
+        .special-role {
+            color: var(--accent);
+        }
+        
+        .note-box {
+            background: rgba(0, 191, 255, 0.1);
+            border-left: 3px solid var(--tech-blue);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .note-text {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        /* 招募部分样式 */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .benefit-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .benefit-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .join-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.5);
+        }
+        
+        .join-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+        }
+        
+        .leader-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .leader-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .leader-title {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .leader-name {
+            font-size: 1.1rem;
+        }
+        
+        .last-update {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-align: right;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .role-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .role-name {
+                margin-bottom: 0.5rem;
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://cdn.discordapp.com/attachments/1363162424173133884/1368798483095486514/TE.jpg?ex=6819886d&is=681836ed&hm=7028dcc889587978e541cea27c88f239eb7f687f4405dbf95a2b141b6c30337d&" alt="GJ Team Logo" class="logo">
+            <h1>🚀 GJ / Great Journey 團隊招募 - 踏上你的 TSB 新旅程！ 🚀</h1>
+            <p class="tagline">在 Roblox TSB 的廣闊世界裡，尋找一個不僅能一起戰鬥，更能分享歡笑的團隊嗎？一個讓你感到真正歸屬的地方？</p>
+        </header>
+        
+        <!-- 招募信息部分 -->
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">✨</span>這就是 GJ / Great Journey！</h2>
+            <p>我們不僅僅是個遊戲隊伍，更是一個輕鬆、友好、充滿活力的 TSB 大家庭！我們的核心目標是享受遊戲，結交朋友！</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">🌟</span>為何加入 GJ？</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3 class="benefit-title">🥳 告別孤單</h3>
+                    <p>在這裡，你總能找到夥伴一起組隊、聊天，分享每一個精彩或有趣的瞬間！</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 class="benefit-title">🤝 友善至上</h3>
+                    <p>我們堅決抵制 Toxic 行為！互相尊重、積極溝通是我們的基本原則。</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 class="benefit-title">🎉 社群同樂</h3>
+                    <p>除了 TSB 對戰，我們還會不定期舉辦團隊內部活動，或者只是在 Discord 裡輕鬆交流！</p>
+                </div>
+                <div class="benefit-card">
+                    <h3 class="benefit-title">💰 團隊福利</h3>
+                    <p>持續關注，未來可能會有更多驚喜活動！</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">🔥</span>重磅福利預告！</h2>
+            <p>為了慶祝團隊成長，當我們的 Discord 成員達到 100 人時，將舉行 1000 Robux 的抽獎活動！趕快加入，也許幸運兒就是你！</p>
+        </div>
+        
+        <!-- 身份组部分 -->
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">👑</span>掌门层级</h2>
+            <p class="section-description">执掌服务器之权柄，维护江湖之秩序</p>
+            
+            <div class="leader-info">
+                <div class="leader-card">
+                    <div class="leader-title">团长</div>
+                    <div class="leader-name">Puneet</div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-title">副团长</div>
+                    <div class="leader-name">andyseven9487</div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-title">代理团长</div>
+                    <div class="leader-name">Lorain</div>
+                </div>
+            </div>
+            
+            <ul class="role-list">
+                <li class="role-item">
+                    <span class="role-name management-role">@GJ 团长 (Founder/Leader)</span>
+                    <span class="role-description">门派创始人，执掌最高权柄</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name management-role">@GJ 副团长 (Co-Leader)</span>
+                    <span class="role-description">辅佐团长，共理门派事务</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name management-role">@核心管理 (Core Admin)</span>
+                    <span class="role-description">Puneet & Lorain</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name management-role">@管理员 (Admin)</span>
+                    <span class="role-description">andyseven9487</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name management-role">@实习管理 (Trial Mod)</span>
+                    <span class="role-description">管理团队之预备成员</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">🛡️</span>门派弟子</h2>
+            <p class="section-description">门派之中坚力量，江湖之新生血液</p>
+            
+            <ul class="role-list">
+                <li class="role-item">
+                    <span class="role-name basic-role">@GJ--正式成员 (GJ Member)</span>
+                    <span class="role-description">通过考验的正式门派成员</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name basic-role">@---GJZ考官--- (GJZ 考官)</span>
+                    <span class="role-description">POPCAT64246</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">⚔️</span>武学境界</h2>
+            <p class="section-description">以 The Strongest Battlegrounds 战绩论武学造诣</p>
+            
+            <ul class="role-list">
+                <li class="role-item">
+                    <span class="role-name skill-role">@五万顶点 (50k Apex)</span>
+                    <span class="role-description">五万斩敌，已达化境</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name skill-role">@四万传说 (40k Legend)</span>
+                    <span class="role-description">四万斩敌，罕逢敌手</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name skill-role">@三万战意 (30k Willpower)</span>
+                    <span class="role-description">三万斩敌，名震一方</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name skill-role">@战场主宰 (Battlefield Dominator)</span>
+                    <span class="role-description">二万斩敌，威名远播</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name skill-role">@万军统帅 (Commander)</span>
+                    <span class="role-description">一万斩敌，小有名气</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name skill-role">@进阶武者 (Adept Warrior)</span>
+                    <span class="role-description">五千斩敌，初露锋芒</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name skill-role">@初入战场 (New Blood)</span>
+                    <span class="role-description">初来乍到，潜力无限</span>
+                </li>
+            </ul>
+            
+            <div class="note-box">
+                <p class="note-text">欲认证或提升武学境界，请携清晰战绩截图，前往 <strong>⁠🛳｜武学阁</strong> 按格式提交申请。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">⭐</span>特殊名衔</h2>
+            <p class="section-description">表彰特殊贡献或授予尊贵身份</p>
+            
+            <ul class="role-list">
+                <li class="role-item">
+                    <span class="role-name special-role">@服务器加成者 (Server Booster)</span>
+                    <span class="role-description">以Nitro加持门派，功德无量</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name special-role">@合作伙伴 (Partner)</span>
+                    <span class="role-description">来自友好门派之使者</span>
+                </li>
+                <li class="role-item">
+                    <span class="role-name special-role">@元老成员 (Veteran Member)</span>
+                    <span class="role-description">门派初创之功臣元老</span>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 招募继续 -->
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">👉</span>我們在尋找這樣的夥伴！</h2>
+            <ul style="padding-left: 2rem; margin-top: 1rem;">
+                <li style="margin-bottom: 0.5rem;">真心熱愛 TSB 這款遊戲。</li>
+                <li style="margin-bottom: 0.5rem;">態度積極、樂於交流、享受團隊合作。</li>
+                <li style="margin-bottom: 0.5rem;">懂得尊重他人，維護友好的團隊氛圍。</li>
+                <li style="margin-bottom: 0.5rem;">願意經常上線參與活動，活躍在我們的 Discord 社群中。</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span class="emoji">🎬</span>先來看看我們的樣子吧！</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/oytyqomvk3s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="section" style="text-align: center;">
+            <h2 class="section-title"><span class="emoji">✅</span>如何踏上 Great Journey？</h2>
+            <p>非常簡單！立即點擊下方的邀請連結，加入我們的 Discord 大本營：</p>
+            <a href="https://discord.gg/eyrMV7MKck" class="join-button">加入 GJ / Great Journey</a>
+            <p style="margin-top: 2rem;">我們在 GJ / Great Journey 熱切期待你的到來，一起創造更多獨一無二的 TSB 回憶！ 💖</p>
+        </div>
+        
+        <div class="last-update">由 Puneet 及 GJ Team 长老团 发布<br>最后修订：2025年4月19日</div>
+        
+        <div class="footer">
+            <p>© 2025 GJ Team. 保留所有權利。</p>
+            <p>訪問我們的子域名: <a href="不打算开放" style="color: var(--primary);">不打算开放</a></p>
+        </div>
+    </div>
+</body>
+</html>
